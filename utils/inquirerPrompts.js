@@ -76,7 +76,8 @@ const promptReadMe = () => {
         'Mozilla Public License 2.0',
         'Apache License 2.0',
         'MIT',
-        'Boost Software 1.0, The Unlicense',
+        'Boost Software 1.0',
+        'The Unlicense',
         'None',
       ],
     },
@@ -88,7 +89,15 @@ const promptReadMe = () => {
     {
       type: 'input',
       name: 'email',
-      message: 'What is your email address? (ENTER to skip)',
+      message: 'What is your email address? (Required)',
+      validate: (emailInput) => {
+        if (emailInput) {
+          return true;
+        } else {
+          console.log('Please enter your email address');
+          return false;
+        }
+      },
     },
   ]);
 };
