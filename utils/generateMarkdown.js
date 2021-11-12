@@ -13,11 +13,14 @@ function renderTableOfContents(data) {
   const mapFields = fields.map((field) => {
     if (data[field.toLowerCase()] !== '' || field === 'Questions') {
       number++;
-      return `${number}. [${field}](#${field})`;
+      return `
+${number}. [${field}](#${field})
+`;
     }
   });
 
-  return mapFields.join('\n');
+  // filter empty elements, join (new line is already incorporated)
+  return mapFields.filter((e) => e !== undefined).join('');
 }
 
 // render test instructions if provided
@@ -27,9 +30,9 @@ function renderTests(tests) {
     return '';
   } else {
     return `
-  ## Testing  
-  ${tests}
-  `;
+## Testing  
+${tests}
+`;
   }
 }
 
@@ -40,9 +43,9 @@ function renderContribute(contribute) {
     return '';
   } else {
     return `
-  ## Contribute  
-  ${contribute}
-  `;
+## Contribute  
+${contribute}
+`;
   }
 }
 
@@ -53,8 +56,8 @@ function renderUsage(usage) {
     return '';
   } else {
     return `
-  ## Usage  
-  ${usage}
+## Usage  
+${usage}
   `;
   }
 }
@@ -66,9 +69,9 @@ function renderInstallation(installation) {
     return '';
   } else {
     return `
-  ## Installation  
+## Installation  
     ${installation}
-  `;
+`;
   }
 }
 
@@ -123,7 +126,9 @@ function renderLicenseLink(license) {
 
   const formattedLicense = formatLicense(license);
 
-  return `Licensed under ${licenses[formattedLicense].url}.`;
+  return `
+Licensed under ${licenses[formattedLicense].url}.
+`;
 }
 
 // If there is no license, return an empty string
@@ -133,8 +138,9 @@ function renderLicenseSection(license) {
     return '';
   } else {
     return `
-  ## License
-  ${renderLicenseLink(license)}`;
+## License
+${renderLicenseLink(license)}
+`;
   }
 }
 
@@ -152,28 +158,28 @@ function generateMarkdown(data) {
   } = data;
 
   return `
-  # ${title}
-  ${renderLicenseBadge(license)}
+# ${title}
+${renderLicenseBadge(license)}
 
-  ## Description
-  ${description}
+## Description
+${description}
 
-  ## Table of Contents
-  ${renderTableOfContents(data)}
+## Table of Contents
+${renderTableOfContents(data)}
 
-  ${renderInstallation(installation)}
+${renderInstallation(installation)}
 
-  ${renderUsage(usage)}
+${renderUsage(usage)}
 
-  ${renderContribute(contribute)}
+${renderContribute(contribute)}
 
-  ${renderTests(testing)}
+${renderTests(testing)}
 
-  ## Questions
-  GitHub profile: [${github}](https://github.com/${github})  
-  Reach out with additional questions at <${email}>
+## Questions
+GitHub profile: [${github}](https://github.com/${github})  
+Reach out with additional questions at <${email}>
 
-  ${renderLicenseSection(license)}
+${renderLicenseSection(license)}
 `;
 }
 
