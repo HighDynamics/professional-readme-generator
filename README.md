@@ -23,7 +23,7 @@ Save time with the markdown, and spend more time coding.
 
 ## Usage
 
-After `npm init`, run the application from the command line using `node index`. Answer the prompts, and have a structured, professional README.  
+Run the application from the command line using `node index`. Answer the prompts. The generated README will be written to the 'dist' directory.
 Here's a link to a walkthrough video: [walkthrough]()
 
 ## Contribute
