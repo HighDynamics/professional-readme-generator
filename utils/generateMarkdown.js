@@ -62,7 +62,7 @@ function renderInstallation(installation) {
   } else {
     return `
   ## Installation  
-  ${installation}
+    ${installation}
   `;
   }
 }
