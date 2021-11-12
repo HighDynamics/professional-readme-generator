@@ -35,7 +35,7 @@ Feel free to fork and create pull requests against the repository.
 GitHub profile: [HighDynamics](https://github.com/HighDynamics)  
  Reach out with additional questions at <HighDynamics@gmail.com>
  
-Forked from [potential-enigma](https://github.com/coding-boot-camp/potential-enigma)
+Forked from [potential-enigma](https://github.com/coding-boot-camp/potential-enigma)  
 Starter code by [Xandromus](https://github.com/Xandromus)
 
 ## License
