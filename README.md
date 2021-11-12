@@ -19,7 +19,7 @@ Save time with the markdown, and spend more time coding.
 
 ## Installation
 
-    npm init
+    npm install
 
 ## Usage
 
