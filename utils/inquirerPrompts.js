@@ -38,7 +38,7 @@ const promptReadMe = () => {
       type: 'input',
       name: 'installation',
       message: 'What are the installation instructions? (Required)',
-      default: 'npm init',
+      default: 'npm install',
       when: ({ confirmInstall }) => {
         return confirmInstall ? true : false;
       },
