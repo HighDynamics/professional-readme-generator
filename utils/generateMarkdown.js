@@ -1,3 +1,4 @@
+// render table of contents based on user input
 function renderTableOfContents(data) {
   const fields = [
     'Installation',
@@ -19,6 +20,7 @@ function renderTableOfContents(data) {
   return mapFields.join('\n');
 }
 
+// render test instructions if provided
 function renderTests(tests) {
   if (tests === '') {
     console.log('Testing blank, skipping section.');
@@ -31,6 +33,7 @@ function renderTests(tests) {
   }
 }
 
+// render contribute instructions if provided
 function renderContribute(contribute) {
   if (contribute === '') {
     console.log('Contribute blank, skipping section.');
@@ -43,6 +46,7 @@ function renderContribute(contribute) {
   }
 }
 
+// render usage instructions if provided
 function renderUsage(usage) {
   if (usage === '') {
     console.log('Usage blank, skipping section.');
@@ -55,6 +59,7 @@ function renderUsage(usage) {
   }
 }
 
+// render installation instructions if provided
 function renderInstallation(installation) {
   if (installation === '') {
     console.log('Installation blank, skipping section');
@@ -95,18 +100,18 @@ const licenses = {
   },
 };
 
+// function to format user-selected license to match keys in licenses object
+const formatLicense = (license) =>
+  license.replaceAll(' ', '').replace('.', 'point').toLowerCase();
+
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license === 'None') {
     return '';
   }
 
-  const formattedLicense = license
-    .replaceAll(' ', '')
-    .replace('.', 'point')
-    .toLowerCase();
+  const formattedLicense = formatLicense(license);
 
-  console.log(formattedLicense);
   return licenses[formattedLicense].badge;
 }
 
@@ -116,10 +121,7 @@ function renderLicenseLink(license) {
     return '';
   }
 
-  const formattedLicense = license
-    .replaceAll(' ', '')
-    .replace('.', 'point')
-    .toLowerCase();
+  const formattedLicense = formatLicense(license);
 
   return `Licensed under ${licenses[formattedLicense].url}.`;
 }
