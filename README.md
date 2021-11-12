@@ -24,7 +24,7 @@ Save time with the markdown, and spend more time coding.
 ## Usage
 
 Run the application from the command line using `node index`. Answer the prompts. The generated README will be written to the 'dist' directory.
-Here's a link to a walkthrough video: [walkthrough]()
+Here's a link to a walkthrough video: [walkthrough](https://drive.google.com/file/d/1YF8ZKFBBBzjKjPRALFqyC4CcpsmxrrdR/view)
 
 ## Contribute
 
@@ -34,6 +34,9 @@ Feel free to fork and create pull requests against the repository.
 
 GitHub profile: [HighDynamics](https://github.com/HighDynamics)  
  Reach out with additional questions at <HighDynamics@gmail.com>
+ 
+Forked from [potential-enigma](https://github.com/coding-boot-camp/potential-enigma)
+Starter code by [Xandromus](https://github.com/Xandromus)
 
 ## License
 
