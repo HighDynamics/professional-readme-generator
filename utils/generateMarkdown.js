@@ -3,53 +3,75 @@ function renderTableOfContents(data) {
     'Installation',
     'Usage',
     'Contribute',
-    'Tests',
+    'Testing',
     'Questions',
     'License',
   ];
 
+  let number = 0;
   const mapFields = fields.map((field) => {
-    let number = 0;
     if (data[field.toLowerCase()] !== '' || field === 'Questions') {
       number++;
       return `${number}. [${field}](#${field})`;
     }
   });
 
-  return mapFields();
+  return mapFields.join('\n');
 }
 
 function renderTests(tests) {
-  return tests !== '' ? `## Testing <br /> ${tests}` : '';
+  if (tests === '') {
+    console.log('Testing blank, skipping section.');
+    return '';
+  } else {
+    return `
+  ## Testing  
+  ${tests}
+  `;
+  }
 }
 
 function renderContribute(contribute) {
-  return contribute !== '' ? `## Contribute <br /> ${contribute}` : '';
+  if (contribute === '') {
+    console.log('Contribute blank, skipping section.');
+    return '';
+  } else {
+    return `
+  ## Contribute  
+  ${contribute}
+  `;
+  }
 }
 
 function renderUsage(usage) {
-  return usage !== '' ? `## Usage <br /> ${usage}` : '';
+  if (usage === '') {
+    console.log('Usage blank, skipping section.');
+    return '';
+  } else {
+    return `
+  ## Usage  
+  ${usage}
+  `;
+  }
 }
 
 function renderInstallation(installation) {
-  return installation !== '' ? `## Installation <br /> ${installation}` : '';
+  if (installation === '') {
+    console.log('Installation blank, skipping section');
+    return '';
+  } else {
+    return `
+  ## Installation  
+  ${installation}
+  `;
+  }
 }
 
 const licenses = {
-  gnuagplv3: {
-    badge:
-      '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)',
-    url: '[GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0)',
-  },
   gnugplv3: {
     badge:
       '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
     url: '[GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0)',
-  },
-  gnulgplv3: {
-    badge:
-      '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)',
-    url: '[GNU LGPL v3](https://www.gnu.org/licenses/lgpl-3.0)',
   },
   mozillapubliclicense2point0: {
     badge:
@@ -66,11 +88,6 @@ const licenses = {
       '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
     url: '[MIT](https://opensource.org/licenses/MIT)',
   },
-  boostsoftware1point0: {
-    badge:
-      '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)',
-    url: '[Boost Software 1.0](https://www.boost.org/LICENSE_1_0.txt)',
-  },
   theunlicense: {
     badge:
       '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)',
@@ -85,10 +102,11 @@ function renderLicenseBadge(license) {
   }
 
   const formattedLicense = license
-    .replace(' ', '')
+    .replaceAll(' ', '')
     .replace('.', 'point')
     .toLowerCase();
 
+  console.log(formattedLicense);
   return licenses[formattedLicense].badge;
 }
 
@@ -99,20 +117,23 @@ function renderLicenseLink(license) {
   }
 
   const formattedLicense = license
-    .replace(' ', '')
+    .replaceAll(' ', '')
     .replace('.', 'point')
     .toLowerCase();
 
-  return `
-    Licensed under the ${licenses[formattedLicense].url} license.
-  `;
+  return `Licensed under ${licenses[formattedLicense].url}.`;
 }
 
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  return license !== 'None'
-    ? `## License <br /> ${renderLicenseLink(license)}`
-    : '';
+  if (license === 'None') {
+    console.log('No license selected, skipping section');
+    return '';
+  } else {
+    return `
+  ## License
+  ${renderLicenseLink(license)}`;
+  }
 }
 
 function generateMarkdown(data) {
@@ -122,11 +143,12 @@ function generateMarkdown(data) {
     installation,
     usage,
     contribute,
-    tests,
+    testing,
     license,
     github,
     email,
   } = data;
+
   return `
   # ${title}
   ${renderLicenseBadge(license)}
@@ -143,10 +165,10 @@ function generateMarkdown(data) {
 
   ${renderContribute(contribute)}
 
-  ${renderTests(tests)}
+  ${renderTests(testing)}
 
   ## Questions
-  GitHub profile: [${github}](https://github.com/${github})
+  GitHub profile: [${github}](https://github.com/${github})  
   Reach out with additional questions at <${email}>
 
   ${renderLicenseSection(license)}

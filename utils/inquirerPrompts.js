@@ -62,7 +62,7 @@ const promptReadMe = () => {
     },
     {
       type: 'input',
-      name: 'tests',
+      name: 'testing',
       message: 'Describe how to test your project. (RETURN to skip)',
     },
     {
@@ -70,13 +70,10 @@ const promptReadMe = () => {
       name: 'license',
       message: 'Which license does your project fall under?',
       choices: [
-        'GNU APGLv3',
-        'GNU GPLv3',
-        'GNU LGPLv3',
-        'Mozilla Public License 2.0',
-        'Apache License 2.0',
         'MIT',
-        'Boost Software 1.0',
+        'GNU GPLv3',
+        'Apache License 2.0',
+        'Mozilla Public License 2.0',
         'The Unlicense',
         'None',
       ],
