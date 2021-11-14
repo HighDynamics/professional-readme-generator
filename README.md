@@ -24,7 +24,7 @@ Save time with the markdown, and spend more time coding.
 ## Usage
 
 Run the application from the command line using `node index`. Answer the prompts. The generated README will be written to the 'dist' directory.
-Here's a link to a walkthrough video: [walkthrough]()
+Here's a link to a walkthrough video: [walkthrough](https://drive.google.com/drive/u/2/folders/1fVFoqiRwYdpOfkMQKWbl4LSpH-RvOq1a)
 
 ## Contribute
 
